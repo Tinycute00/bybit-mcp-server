@@ -1,0 +1,75 @@
+{
+  "name": "bybit-mcp",
+  "version": "1.0.0",
+  "description": "Bybit MCP Service for automated trading",
+  "endpoints": {
+    "contract": {
+      "order": {
+        "method": "POST",
+        "path": "/contract/order",
+        "description": "Place contract order",
+        "permissions": ["order"]
+      },
+      "position": {
+        "method": "GET",
+        "path": "/contract/position",
+        "description": "Get contract positions",
+        "permissions": ["position"]
+      }
+    },
+    "spot": {
+      "order": {
+        "method": "POST",
+        "path": "/spot/order",
+        "description": "Place spot order",
+        "permissions": ["spot"]
+      },
+      "asset": {
+        "method": "GET",
+        "path": "/spot/asset",
+        "description": "Get spot assets",
+        "permissions": ["spot"]
+      }
+    },
+    "wallet": {
+      "balance": {
+        "method": "GET",
+        "path": "/wallet",
+        "description": "Get wallet balance",
+        "permissions": ["wallet"]
+      }
+    },
+    "finance": {
+      "records": {
+        "method": "GET",
+        "path": "/finance",
+        "description": "Get finance records",
+        "permissions": ["finance"]
+      }
+    }
+  },
+  "settings": {
+    "testnet": true,
+    "baseUrl": "http://127.0.0.1:8000",
+    "permissions": ["order", "position", "asset", "spot", "usdc", "wallet", "exchange", "finance"]
+  },
+  "mcpServers": {
+    "bybit": {
+      "command": "uvicorn",
+      "args": [
+        "main:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000"
+      ],
+      "env": {
+        "BYBIT_API_KEY": "",
+        "BYBIT_API_SECRET": "",
+        "BYBIT_TESTNET": "true"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+} 
