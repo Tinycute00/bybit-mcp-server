@@ -1,41 +1,50 @@
-# Bybit MCP 自動化服務
+# Bybit MCP Server
 
-## 目標
-- 自動將Bybit API（合約、現貨、USDC合約、資產、錢包、兌換、理財等）暴露為MCP工具，支援主網/測試網、HMAC/RSA簽名。
-- 支援API Key權限自動調整，方便Web3應用、AI代理、量化交易等場景。
+本專案是一個專為 Bybit 交易所打造的 MCP Server，讓用戶可透過 MCP 標準協議，安全、便捷地遠端自動化操作 Bybit 的合約、現貨、資產、錢包等功能。
 
-## 安裝與啟動
+---
 
-### 1. 環境需求
-- Python 3.8 以上
-- pip (Python 套件管理工具)
+## 你能用它做什麼？
+- 以標準 MCP 客戶端（如 Cursor MCP）連接本服務，無需本地部署，即可：
+  - 下單（合約/現貨）
+  - 查詢持倉、資產、錢包餘額
+  - 擴展更多自動化交易與 Web3 應用
+- 適合 AI 代理、量化交易、Web3 應用等場景
 
-### 2. 安裝依賴
+---
+
+## 如何安裝 MCP 客戶端
+
+### 1. Windows 系統
+- 前往 [Cursor 官網](https://www.cursor.so/) 下載 Windows 版本安裝檔，依指示安裝。
+- 安裝後啟動 Cursor，新增 MCP 服務連線，填入服務端 endpoint（如 `https://your-cloud-domain.com/mcp`）。
+
+### 2. macOS 系統
+- 前往 [Cursor 官網](https://www.cursor.so/) 下載 macOS 版本，拖曳至應用程式資料夾安裝。
+- 啟動 Cursor，新增 MCP 服務連線，填入 endpoint。
+
+### 3. Linux 系統
+- 下載 AppImage 或執行檔，賦予執行權限：
 ```bash
-pip install -r requirements.txt
+chmod +x cursor-x86_64.AppImage
+./cursor-x86_64.AppImage
+```
+- 啟動後同樣新增 MCP 服務連線。
+
+### 4. 連線設定範例
+```json
+{
+  "name": "bybit-mcp-cloud",
+  "endpoint": "https://your-cloud-domain.com/mcp"
+}
 ```
 
-### 3. 設定環境變數
-請於啟動前設置 Bybit API 金鑰（可用於測試網或主網）：
-- Windows（PowerShell）：
-```powershell
-$env:BYBIT_API_KEY="你的API_KEY"
-$env:BYBIT_API_SECRET="你的API_SECRET"
-$env:BYBIT_TESTNET="true"  # 測試網設為 true，主網設為 false
-```
-- Linux/macOS（bash）：
-```bash
-export BYBIT_API_KEY="你的API_KEY"
-export BYBIT_API_SECRET="你的API_SECRET"
-export BYBIT_TESTNET="true"  # 測試網設為 true，主網設為 false
-```
+---
 
-### 4. 啟動服務
-```bash
-uvicorn main:app --reload
-```
-
-啟動後可透過 http://127.0.0.1:8000/docs 查看API文件。
+## 參考資源
+- [fastapi_mcp](https://github.com/tadata-org/fastapi_mcp)
+- [Bybit API Docs](https://bybit-exchange.github.io/docs/zh-TW/v5/guide)
+- [pybit](https://github.com/bybit-exchange/pybit)
 
 ## MCP工具自動暴露
 - 所有FastAPI路由自動成為MCP工具，支援Cursor、Claude等MCP客戶端。
@@ -43,11 +52,6 @@ uvicorn main:app --reload
 ## 擴展
 - 於`main.py`中新增API路由，根據Bybit權限需求擴展。
 - 權限中介層可根據API Key權限自動啟用/禁用API。
-
-## 參考
-- [fastapi_mcp](https://github.com/tadata-org/fastapi_mcp)
-- [Bybit API Docs](https://bybit-exchange.github.io/docs/zh-TW/v5/guide)
-- [pybit](https://github.com/bybit-exchange/pybit)
 
 ## MCP 客戶端安裝與使用
 
