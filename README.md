@@ -13,25 +13,28 @@
 
 ---
 
-## 如何安裝 MCP 客戶端
+## 如何安裝 MCP 客戶端（依作業系統區分）
 
-### 1. Windows 系統
-- 前往 [Cursor 官網](https://www.cursor.so/) 下載 Windows 版本安裝檔，依指示安裝。
-- 安裝後啟動 Cursor，新增 MCP 服務連線，填入服務端 endpoint（如 `https://your-cloud-domain.com/mcp`）。
+### 1. Windows 安裝方式
+- 下載適用於 Windows 的 MCP 客戶端安裝程式（.exe）。
+- 雙擊安裝，依指示完成。
+- 啟動 MCP 客戶端，新增服務連線，填入 endpoint（如 `https://your-cloud-domain.com/mcp`）。
 
-### 2. macOS 系統
-- 前往 [Cursor 官網](https://www.cursor.so/) 下載 macOS 版本，拖曳至應用程式資料夾安裝。
-- 啟動 Cursor，新增 MCP 服務連線，填入 endpoint。
+### 2. macOS 安裝方式
+- 下載適用於 macOS 的 MCP 客戶端（.dmg）。
+- 雙擊 .dmg，將應用程式拖曳到「應用程式」資料夾。
+- 從「應用程式」啟動 MCP 客戶端，新增服務連線，填入 endpoint。
 
-### 3. Linux 系統
-- 下載 AppImage 或執行檔，賦予執行權限：
+### 3. Linux 安裝方式
+- 下載 AppImage 或執行檔（如 `mcp-client-x86_64.AppImage`）。
+- 終端機執行：
 ```bash
-chmod +x cursor-x86_64.AppImage
-./cursor-x86_64.AppImage
+chmod +x mcp-client-x86_64.AppImage
+./mcp-client-x86_64.AppImage
 ```
-- 啟動後同樣新增 MCP 服務連線。
+- 啟動後同樣新增服務連線。
 
-### 4. 連線設定範例
+### 連線設定範例
 ```json
 {
   "name": "bybit-mcp-cloud",
