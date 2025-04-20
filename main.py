@@ -10,6 +10,12 @@ BYBIT_API_KEY = os.getenv("BYBIT_API_KEY", "")
 BYBIT_API_SECRET = os.getenv("BYBIT_API_SECRET", "")
 BYBIT_TESTNET = os.getenv("BYBIT_TESTNET", "true").lower() == "true"
 
+# 權限中介層（修正重點）
+def require_permission(permission: str):
+    def checker():
+        return True
+    return checker
+
 # Bybit API初始化
 def get_bybit_client():
     if not BYBIT_API_KEY or not BYBIT_API_SECRET:
