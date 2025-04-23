@@ -15,5 +15,8 @@
   },
   "peerDependencies": {
     "bybit-api": "^3.0.0"
+  },
+  "dependencies": {
+    "fastmcp": "^1.22.4"
   }
 }

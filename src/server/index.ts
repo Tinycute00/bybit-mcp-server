@@ -1,4 +1,4 @@
-import { FastMCP } from '@fastmcp/core';
+import { FastMCP } from 'fastmcp';
 import { TradingService, MarketService, AccountService } from '../core/services';
 
 export async function startServer(mcp: FastMCP) {
