@@ -1,0 +1,15 @@
+{
+  "bybit-mcp-zeabur": {
+    "url": "https://bybit-mcp.zeabur.app/sse"
+  },
+  "bybit-mcp-local": {
+    "command": "bun",
+    "args": [
+      "run",
+      "src/server/http-server.ts"
+    ],
+    "env": {
+      "PORT": "3001"
+    }
+  }
+} 

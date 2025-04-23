@@ -9,10 +9,10 @@
     "src"
   ],
   "bin": {
-    "bybit-mcp": "build/index.js"
+    "bybit-mcp": "build/server/http-server.js"
   },
   "scripts": {
-    "start": "bun run src/index.ts",
+    "start": "bun run src/server/http-server.ts",
     "build": "bun build src/index.ts --outdir build --target node",
     "build:http": "bun build src/server/http-server.ts --outdir build --target node",
     "dev": "bun --watch src/index.ts",

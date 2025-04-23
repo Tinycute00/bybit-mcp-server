@@ -449,3 +449,42 @@ export BYBIT_TESTNET="false"
 
 bun x bybit-mcp@1.0.9
 ```
+
+## npx 版本 HTTP 服務啟動
+
+```bash
+# 以 npx 啟動 HTTP 服務，並傳入 Bybit API 金鑰
+BYBIT_API_KEY=你的key BYBIT_API_SECRET=你的secret BYBIT_TESTNET=false npx bybit-mcp@latest
+# 或指定 PORT
+PORT=8080 BYBIT_API_KEY=你的key BYBIT_API_SECRET=你的secret npx bybit-mcp@latest
+```
+
+## Zeabur 雲端部署
+
+1. 於 Zeabur 新建 Node.js 專案，將本專案上傳。
+2. 設定啟動指令：
+   ```bash
+   npx bybit-mcp@latest
+   ```
+3. 於 Zeabur 控制台設置環境變數：
+   - `BYBIT_API_KEY`：用戶 Bybit API Key
+   - `BYBIT_API_SECRET`：用戶 Bybit API Secret
+   - `BYBIT_TESTNET`：如需測試網設為 `true`
+   - `PORT`：自訂 HTTP 服務埠（預設 3001）
+4. 部署後，HTTP 服務將於 `/sse` 提供 SSE 端點。
+
+## ⚠️ 部署注意事項
+
+- **Zeabur 或任何雲端部署，請務必啟動 HTTP 服務模式**：
+  - 推薦啟動指令：
+    ```bash
+    npx bybit-mcp@latest
+    # 或
+    bun run src/server/http-server.ts
+    # 或
+    node build/server/http-server.js
+    ```
+  - 預設監聽 3001 埠，Zeabur 會自動健康檢查 HTTP 端口。
+- **本地開發測試**可用 stdio 模式（bun run src/index.ts），但此模式不會啟動 HTTP 服務，僅供本地命令列互動。
+
+---

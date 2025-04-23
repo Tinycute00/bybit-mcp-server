@@ -124,6 +124,8 @@ export function registerTools(server: FastMCP) {
     name: "mcp_bybit_place_spot_order",
     description: "提交現貨訂單 (Submit a spot order)",
     parameters: z.object({
+      apiKey: z.string().optional().describe("Bybit API Key (可選, 不填則用服務器環境變數)"),
+      apiSecret: z.string().optional().describe("Bybit API Secret (可選, 不填則用服務器環境變數)"),
       symbol: z.string().describe("交易對 (Trading pair), e.g., BTCUSDT"),
       side: z.enum(["Buy", "Sell"]).describe("訂單方向 (Order side)"),
       orderType: z.enum(["Market", "Limit"]).describe("訂單類型 (Order type)"),
@@ -134,11 +136,25 @@ export function registerTools(server: FastMCP) {
       orderLinkId: z.string().optional().describe("用戶自定義訂單 ID (User custom order ID).")
     }),
     execute: async (params) => {
-      const client = getBybitClient();
+      const client = (() => {
+        // 動態傳入 apiKey/apiSecret
+        if (params.apiKey && params.apiSecret) {
+          const useTestnet = process.env.BYBIT_TESTNET?.toLowerCase() === 'true';
+          return new RestClientV5({
+            key: params.apiKey,
+            secret: params.apiSecret,
+            testnet: useTestnet,
+          });
+        }
+        return getBybitClient();
+      })();
       const orderParams: any = {
         category: 'spot' as const,
         ...params // Spread operator handles optional params
       };
+      // 移除 apiKey/apiSecret，避免傳遞到 bybit sdk
+      delete orderParams.apiKey;
+      delete orderParams.apiSecret;
       return executeApiCall(() => client.submitOrder(orderParams));
     }
   });
