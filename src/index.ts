@@ -1,4 +1,4 @@
-import { FastMCP } from '@fastmcp/core';
+import { FastMCP } from 'fastmcp';
 import { startServer } from './server';
 
 async function main() {

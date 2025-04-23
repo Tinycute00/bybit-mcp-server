@@ -14,7 +14,6 @@
     "nodemon": "^2.0.16"
   },
   "peerDependencies": {
-    "@fastmcp/core": "^1.0.0",
     "bybit-api": "^3.0.0"
   }
 }
