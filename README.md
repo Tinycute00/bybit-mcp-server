@@ -111,29 +111,6 @@ npm install
 npm run dev
 ```
 
-## Troubleshooting
-
-### Windows
-- If you encounter EACCES errors, run PowerShell as Administrator
-- Check Windows Defender or antivirus if connection issues occur
-
-### macOS
-- If permission errors occur, use `sudo` for global installations
-- For M1/M2 Macs, ensure Rosetta 2 is installed if needed
-
-### Linux
-- If permission errors occur, use `sudo` or configure npm to use a different directory
-- Ensure required build tools are installed: `sudo apt-get install build-essential`
-
 ## Documentation
 
 For detailed API documentation, please refer to the [Bybit API docs](https://bybit-exchange.github.io/docs/zh-TW/v5/intro).
-
-## Support
-
-If you encounter any issues, please:
-1. Check the troubleshooting section above
-2. Ensure your Node.js version is compatible
-3. Verify your API credentials
-4. Check Bybit's server status
-5. Open an issue on GitHub if the problem persists
