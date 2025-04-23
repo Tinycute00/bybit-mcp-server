@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "easy-mcp": "^0.0.0-development"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1"
+  }
+}
