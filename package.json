@@ -18,5 +18,6 @@
   },
   "dependencies": {
     "fastmcp": "^1.22.4"
-  }
+  },
+  "type": "module"
 }
